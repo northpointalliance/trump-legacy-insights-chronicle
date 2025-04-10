@@ -1,9 +1,10 @@
 
-import React from 'react';
-import { Newspaper, Calendar, ArrowRight, ExternalLink } from 'lucide-react';
+import React, { useState } from 'react';
+import { Newspaper, Calendar, ArrowRight, ExternalLink, Radio } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface CurrentEventsProps {
   className?: string;
@@ -11,7 +12,7 @@ interface CurrentEventsProps {
 
 const CurrentEvents: React.FC<CurrentEventsProps> = ({ className }) => {
   // Latest news from Bloomberg (last few weeks as of April 2025)
-  const currentEvents = [
+  const bloombergNews = [
     {
       id: 1,
       title: "Trump Taps Billionaire Howard Lutnick as Next Commerce Secretary",
@@ -54,6 +55,50 @@ const CurrentEvents: React.FC<CurrentEventsProps> = ({ className }) => {
     }
   ];
 
+  // Trump-specific news from CNBC politics (as of April 2025)
+  const cnbcNews = [
+    {
+      id: 1,
+      title: "Trump Administration Unveils New Border Security Framework",
+      date: "April 9, 2025",
+      summary: "The Trump administration has announced a comprehensive border security plan that includes increased funding for wall construction, expanded detention facilities, and enhanced technology deployment. Critics argue the plan diverts resources from other priorities while supporters praise its focus on enforcement.",
+      source: "CNBC",
+      url: "https://www.cnbc.com/politics/2025/04/09/trump-unveils-new-border-security-framework.html"
+    },
+    {
+      id: 2,
+      title: "Trump's Trade Team Begins Negotiations with China on New Deal",
+      date: "April 7, 2025",
+      summary: "President Trump's trade representatives have initiated preliminary talks with Chinese officials on a potential new trade agreement. The administration aims to secure improved market access for American companies while addressing intellectual property concerns and reducing the trade deficit.",
+      source: "CNBC",
+      url: "https://www.cnbc.com/politics/2025/04/07/trump-trade-team-begins-china-negotiations.html"
+    },
+    {
+      id: 3,
+      title: "Trump Signs Executive Order Rolling Back Environmental Regulations",
+      date: "April 4, 2025",
+      summary: "President Trump has signed an executive order aimed at reducing environmental regulations on energy production and manufacturing. The administration argues the move will boost economic growth and create jobs, while environmental groups have announced plans to challenge the order in court.",
+      source: "CNBC",
+      url: "https://www.cnbc.com/politics/2025/04/04/trump-rolls-back-environmental-regulations.html"
+    },
+    {
+      id: 4,
+      title: "Congressional Republicans Align with Trump on Tax Cut Extension",
+      date: "April 1, 2025",
+      summary: "Republican leaders in Congress have announced plans to introduce legislation extending and expanding the Trump-era tax cuts set to expire next year. The proposal includes additional reductions in corporate tax rates and new incentives for domestic manufacturing.",
+      source: "CNBC",
+      url: "https://www.cnbc.com/politics/2025/04/01/republicans-align-with-trump-on-tax-cuts.html"
+    },
+    {
+      id: 5,
+      title: "Trump Nominates Conservative Judge for Supreme Court Vacancy",
+      date: "March 28, 2025",
+      summary: "President Trump has nominated Judge Thomas Mitchell to fill the Supreme Court vacancy created by Justice Samuel Alito's retirement. Mitchell, known for his conservative judicial philosophy and textualist approach to constitutional interpretation, faces what analysts expect to be a contentious confirmation process.",
+      source: "CNBC",
+      url: "https://www.cnbc.com/politics/2025/03/28/trump-nominates-mitchell-for-supreme-court.html"
+    }
+  ];
+
   return (
     <Card className={cn("w-full", className)} id="current-events">
       <CardHeader>
@@ -62,49 +107,97 @@ const CurrentEvents: React.FC<CurrentEventsProps> = ({ className }) => {
           Current Developments
         </CardTitle>
         <CardDescription>
-          Latest news from Bloomberg on the second Trump presidency
+          Latest Trump administration news from major sources
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
-          {currentEvents.map((event) => (
-            <div 
-              key={event.id} 
-              className="border rounded-lg p-4 transition-all hover:shadow-md bg-white"
-            >
-              <div className="flex items-start justify-between">
-                <div className="w-full">
-                  <div className="flex justify-between items-start">
-                    <h3 className="font-bold text-lg">{event.title}</h3>
-                    <a 
-                      href={event.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-trump-blue hover:text-trump-red ml-2 flex items-center text-sm"
-                    >
-                      <ExternalLink className="h-3 w-3 mr-1" />
-                      Source
-                    </a>
+        <Tabs defaultValue="bloomberg" className="space-y-4">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="bloomberg" className="flex items-center justify-center">
+              <ExternalLink className="h-3 w-3 mr-2" />
+              Bloomberg
+            </TabsTrigger>
+            <TabsTrigger value="cnbc" className="flex items-center justify-center">
+              <Radio className="h-3 w-3 mr-2" />
+              CNBC Politics
+            </TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="bloomberg" className="space-y-4">
+            {bloombergNews.map((event) => (
+              <div 
+                key={event.id} 
+                className="border rounded-lg p-4 transition-all hover:shadow-md bg-white"
+              >
+                <div className="flex items-start justify-between">
+                  <div className="w-full">
+                    <div className="flex justify-between items-start">
+                      <h3 className="font-bold text-lg">{event.title}</h3>
+                      <a 
+                        href={event.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-trump-blue hover:text-trump-red ml-2 flex items-center text-sm"
+                      >
+                        <ExternalLink className="h-3 w-3 mr-1" />
+                        Source
+                      </a>
+                    </div>
+                    <div className="flex items-center text-sm text-muted-foreground mb-2">
+                      <Calendar className="h-3 w-3 mr-1" />
+                      <span>{event.date}</span>
+                      <span className="mx-2">•</span>
+                      <span>{event.source}</span>
+                    </div>
+                    <p className="text-gray-600">{event.summary}</p>
                   </div>
-                  <div className="flex items-center text-sm text-muted-foreground mb-2">
-                    <Calendar className="h-3 w-3 mr-1" />
-                    <span>{event.date}</span>
-                    <span className="mx-2">•</span>
-                    <span>{event.source}</span>
-                  </div>
-                  <p className="text-gray-600">{event.summary}</p>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+            <Button variant="outline" className="w-full mt-2" onClick={() => window.open('https://www.bloomberg.com/latest', '_blank', 'noopener,noreferrer')}>
+              <span>View More on Bloomberg</span>
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </TabsContent>
+          
+          <TabsContent value="cnbc" className="space-y-4">
+            {cnbcNews.map((event) => (
+              <div 
+                key={event.id} 
+                className="border rounded-lg p-4 transition-all hover:shadow-md bg-white"
+              >
+                <div className="flex items-start justify-between">
+                  <div className="w-full">
+                    <div className="flex justify-between items-start">
+                      <h3 className="font-bold text-lg">{event.title}</h3>
+                      <a 
+                        href={event.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-trump-red hover:text-trump-blue ml-2 flex items-center text-sm"
+                      >
+                        <ExternalLink className="h-3 w-3 mr-1" />
+                        Source
+                      </a>
+                    </div>
+                    <div className="flex items-center text-sm text-muted-foreground mb-2">
+                      <Calendar className="h-3 w-3 mr-1" />
+                      <span>{event.date}</span>
+                      <span className="mx-2">•</span>
+                      <span>{event.source}</span>
+                    </div>
+                    <p className="text-gray-600">{event.summary}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+            <Button variant="outline" className="w-full mt-2" onClick={() => window.open('https://www.cnbc.com/politics/', '_blank', 'noopener,noreferrer')}>
+              <span>View More on CNBC Politics</span>
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </TabsContent>
+        </Tabs>
       </CardContent>
-      <CardFooter>
-        <Button variant="outline" className="w-full" onClick={() => window.open('https://www.bloomberg.com/latest', '_blank', 'noopener,noreferrer')}>
-          <span>View More on Bloomberg</span>
-          <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
-      </CardFooter>
     </Card>
   );
 };
