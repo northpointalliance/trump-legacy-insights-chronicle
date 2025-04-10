@@ -18,7 +18,7 @@ const Index = () => {
               Tracking the Trump Presidency
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              An analytical chronicle of key policies, events, and their economic impact 
+              An analytical chronicle of key policies, events, cabinet turnover, and economic impact 
               from the first presidency (2017-2021) and the second term (2025-).
             </p>
           </div>
