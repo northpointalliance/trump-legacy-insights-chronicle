@@ -42,6 +42,12 @@ const SiteMap = () => {
               </Link>
               <p className="text-gray-600">Trump's business ventures, failures, and legal controversies before his presidency</p>
             </li>
+            <li className="border-b pb-2">
+              <Link to="/fox-news" className="text-xl text-trump-blue hover:text-trump-red transition-colors">
+                Fox News and Campaign Rallies
+              </Link>
+              <p className="text-gray-600">The relationship between Fox News coverage and Trump's political campaigns</p>
+            </li>
           </ul>
           
           <h2 className="text-2xl font-bold text-trump-blue my-6">Sections on Home Page</h2>

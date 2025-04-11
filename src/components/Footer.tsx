@@ -28,6 +28,9 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
             <Link to="/business-controversies" className="hover:text-trump-red transition-colors duration-200">
               Business History
             </Link>
+            <Link to="/fox-news" className="hover:text-trump-red transition-colors duration-200">
+              Fox News
+            </Link>
             <Link to="/sitemap" className="hover:text-trump-red transition-colors duration-200">
               Site Map
             </Link>
