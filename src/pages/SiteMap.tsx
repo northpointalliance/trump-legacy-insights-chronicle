@@ -36,6 +36,12 @@ const SiteMap = () => {
               </Link>
               <p className="text-gray-600">Historical analysis of U.S. trade policies, tariffs, and economic implications</p>
             </li>
+            <li className="border-b pb-2">
+              <Link to="/business-controversies" className="text-xl text-trump-blue hover:text-trump-red transition-colors">
+                Business History & Controversies
+              </Link>
+              <p className="text-gray-600">Trump's business ventures, failures, and legal controversies before his presidency</p>
+            </li>
           </ul>
           
           <h2 className="text-2xl font-bold text-trump-blue my-6">Sections on Home Page</h2>
