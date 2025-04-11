@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Flag, TrendingUp, BriefcaseBusiness, Tv } from 'lucide-react';
+import { Flag, TrendingUp, BriefcaseBusiness, Tv, MessageSquareX } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 
@@ -41,6 +41,9 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           </Link>
           <Link to="/fox-news" className="hover:text-trump-red transition-colors duration-200 flex items-center px-2 py-1">
             <Tv className="mr-1 h-4 w-4" /> Fox News
+          </Link>
+          <Link to="/trump-x-posts" className="hover:text-trump-red transition-colors duration-200 flex items-center px-2 py-1">
+            <MessageSquareX className="mr-1 h-4 w-4" /> X Posts
           </Link>
           <Link to="/sitemap" className="hover:text-trump-red transition-colors duration-200 px-2 py-1">
             Site Map

@@ -48,6 +48,12 @@ const SiteMap = () => {
               </Link>
               <p className="text-gray-600">The relationship between Fox News coverage and Trump's political campaigns</p>
             </li>
+            <li className="border-b pb-2">
+              <Link to="/trump-x-posts" className="text-xl text-trump-blue hover:text-trump-red transition-colors">
+                X Posts Before January 6th
+              </Link>
+              <p className="text-gray-600">Key posts about election fraud and calls to the Capitol prior to January 6, 2021</p>
+            </li>
           </ul>
           
           <h2 className="text-2xl font-bold text-trump-blue my-6">Sections on Home Page</h2>
