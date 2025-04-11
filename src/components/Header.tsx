@@ -2,6 +2,7 @@
 import React from 'react';
 import { Flag, TrendingUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 
 interface HeaderProps {
   className?: string;
@@ -19,16 +20,22 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           </div>
         </div>
         
-        <nav className="flex space-x-4 md:space-x-6">
-          <a href="#timeline" className="hover:text-trump-red transition-colors duration-200">
+        <nav className="flex flex-wrap space-x-2 md:space-x-6">
+          <Link to="/" className="hover:text-trump-red transition-colors duration-200 px-2 py-1">
+            Home
+          </Link>
+          <a href="#timeline" className="hover:text-trump-red transition-colors duration-200 px-2 py-1">
             Timeline
           </a>
-          <a href="#market-impact" className="hover:text-trump-red transition-colors duration-200 flex items-center">
+          <a href="#market-impact" className="hover:text-trump-red transition-colors duration-200 flex items-center px-2 py-1">
             <TrendingUp className="mr-1 h-4 w-4" /> Market Impact
           </a>
-          <a href="#current-events" className="hover:text-trump-red transition-colors duration-200">
+          <a href="#current-events" className="hover:text-trump-red transition-colors duration-200 px-2 py-1">
             Current Events
           </a>
+          <Link to="/trade-history" className="hover:text-trump-red transition-colors duration-200 px-2 py-1">
+            Trade History
+          </Link>
         </nav>
       </div>
     </header>
