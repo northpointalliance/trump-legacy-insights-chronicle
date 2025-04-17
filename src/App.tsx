@@ -9,6 +9,7 @@ import TradeHistory from "./pages/TradeHistory";
 import BusinessControversies from "./pages/BusinessControversies";
 import FoxNews from "./pages/FoxNews";
 import TrumpXPosts from "./pages/TrumpXPosts";
+import TrumpInsults from "./pages/TrumpInsults";
 import SiteMap from "./pages/SiteMap";
 import NotFound from "./pages/NotFound";
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/business-controversies" element={<BusinessControversies />} />
           <Route path="/fox-news" element={<FoxNews />} />
           <Route path="/trump-x-posts" element={<TrumpXPosts />} />
+          <Route path="/trump-insults" element={<TrumpInsults />} />
           <Route path="/sitemap" element={<SiteMap />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

@@ -54,6 +54,12 @@ const SiteMap = () => {
               </Link>
               <p className="text-gray-600">Key posts about election fraud and calls to the Capitol prior to January 6, 2021</p>
             </li>
+            <li className="border-b pb-2">
+              <Link to="/trump-insults" className="text-xl text-trump-blue hover:text-trump-red transition-colors">
+                Trump's Public Insults
+              </Link>
+              <p className="text-gray-600">Documented insults directed at politicians, celebrities, journalists, and other public figures</p>
+            </li>
           </ul>
           
           <h2 className="text-2xl font-bold text-trump-blue my-6">Sections on Home Page</h2>
