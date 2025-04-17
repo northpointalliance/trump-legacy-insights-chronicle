@@ -3,7 +3,7 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { ArrowDownRight, Info } from 'lucide-react';
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
+import { ChartContainer } from '@/components/ui/chart';
 import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -89,13 +89,8 @@ const ForeignTravelersData = () => {
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="month" />
                   <YAxis domain={[3.5, 6]} />
-                  <ChartTooltip 
-                    content={(props) => (
-                      <ChartTooltipContent 
-                        {...props} 
-                        formatter={(value) => [`${value} million`, 'Visitors']}
-                      />
-                    )}
+                  <Tooltip 
+                    formatter={(value) => [`${value} million`, 'Visitors']}
                   />
                   <Area 
                     type="monotone" 
