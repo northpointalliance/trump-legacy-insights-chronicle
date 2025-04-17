@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import EventTimeline from '@/components/EventTimeline';
 import MarketImpact from '@/components/MarketImpact';
 import CurrentEvents from '@/components/CurrentEvents';
+import ForeignTravelersData from '@/components/ForeignTravelersData';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -27,6 +28,7 @@ const Index = () => {
         <div className="space-y-12">
           <EventTimeline />
           <MarketImpact />
+          <ForeignTravelersData />
           <CurrentEvents />
         </div>
       </main>

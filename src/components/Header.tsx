@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Flag, TrendingUp, BriefcaseBusiness, Tv, MessageSquareX, MessageSquare } from 'lucide-react';
+import { Flag, TrendingUp, BriefcaseBusiness, Tv, MessageSquareX, MessageSquare, Map } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 
@@ -29,6 +29,9 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           </a>
           <a href="/#market-impact" className="hover:text-trump-red transition-colors duration-200 flex items-center px-2 py-1">
             <TrendingUp className="mr-1 h-4 w-4" /> Market Impact
+          </a>
+          <a href="/#foreign-travelers" className="hover:text-trump-red transition-colors duration-200 flex items-center px-2 py-1">
+            <Map className="mr-1 h-4 w-4" /> Travel Decline
           </a>
           <a href="/#current-events" className="hover:text-trump-red transition-colors duration-200 px-2 py-1">
             Current Events
