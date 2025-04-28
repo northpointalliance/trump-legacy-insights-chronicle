@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -12,6 +11,7 @@ import TrumpXPosts from "./pages/TrumpXPosts";
 import TrumpInsults from "./pages/TrumpInsults";
 import SiteMap from "./pages/SiteMap";
 import NotFound from "./pages/NotFound";
+import FirstPresidency from "./pages/FirstPresidency";
 
 const queryClient = new QueryClient();
 
@@ -23,13 +23,13 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/first-presidency" element={<FirstPresidency />} />
           <Route path="/trade-history" element={<TradeHistory />} />
           <Route path="/business-controversies" element={<BusinessControversies />} />
           <Route path="/fox-news" element={<FoxNews />} />
           <Route path="/trump-x-posts" element={<TrumpXPosts />} />
           <Route path="/trump-insults" element={<TrumpInsults />} />
           <Route path="/sitemap" element={<SiteMap />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
