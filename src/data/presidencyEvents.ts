@@ -1,4 +1,3 @@
-
 export interface PresidencyEvent {
   id: number;
   date: string;
@@ -92,7 +91,7 @@ export const firstTermEvents: PresidencyEvent[] = [
   }
 ];
 
-// Placeholder for second term events
+// Second term events (First 100 days)
 export const secondTermEvents: PresidencyEvent[] = [
   {
     id: 101,
@@ -102,5 +101,68 @@ export const secondTermEvents: PresidencyEvent[] = [
     category: 'political',
     impact: 'high'
   },
-  // More events will be added as the second term progresses
+  {
+    id: 102,
+    date: '2025-01-21',
+    title: 'Executive Orders on Immigration',
+    description: 'Signed multiple executive orders reinstating strict border policies, including expanded wall construction and enhanced deportation measures.',
+    category: 'policy',
+    impact: 'high'
+  },
+  {
+    id: 103,
+    date: '2025-02-01',
+    title: 'China Trade Negotiations',
+    description: 'Initiated new trade negotiations with China, announcing plans for increased tariffs on Chinese imports.',
+    category: 'economic',
+    impact: 'high'
+  },
+  {
+    id: 104,
+    date: '2025-02-15',
+    title: 'Energy Independence Order',
+    description: 'Signed executive order promoting domestic energy production and rolling back environmental regulations.',
+    category: 'policy',
+    impact: 'medium'
+  },
+  {
+    id: 105,
+    date: '2025-03-01',
+    title: 'NATO Funding Demands',
+    description: 'Demanded NATO allies increase defense spending to 3% of GDP, threatening reduced U.S. support.',
+    category: 'international',
+    impact: 'medium'
+  },
+  {
+    id: 106,
+    date: '2025-03-15',
+    title: 'Tax Reform 2.0',
+    description: 'Proposed new tax legislation extending and expanding previous tax cuts for individuals and corporations.',
+    category: 'economic',
+    impact: 'high'
+  },
+  {
+    id: 107,
+    date: '2025-04-01',
+    title: 'Social Media Regulation',
+    description: 'Announced new executive actions targeting social media companies over content moderation policies.',
+    category: 'policy',
+    impact: 'medium'
+  },
+  {
+    id: 108,
+    date: '2025-04-15',
+    title: 'Iran Policy Shift',
+    description: 'Announced new sanctions on Iran and withdrawal from remaining nuclear-related agreements.',
+    category: 'international',
+    impact: 'high'
+  },
+  {
+    id: 109,
+    date: '2025-04-28',
+    title: '100 Days Milestone',
+    description: 'Marked first 100 days of second term with major policy implementations on immigration, trade, and energy.',
+    category: 'political',
+    impact: 'medium'
+  }
 ];
