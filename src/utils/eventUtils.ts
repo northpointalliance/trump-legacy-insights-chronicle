@@ -1,18 +1,19 @@
 
+import React from 'react';
 import { Calendar, TrendingUp, Globe2, Gavel, BadgeCheck } from 'lucide-react';
 
 export const getCategoryIcon = (category: string) => {
   switch (category) {
     case 'policy':
-      return <BadgeCheck className="h-4 w-4 text-blue-500" />;
+      return React.createElement(BadgeCheck, { className: "h-4 w-4 text-blue-500" });
     case 'international':
-      return <Globe2 className="h-4 w-4 text-green-500" />;
+      return React.createElement(Globe2, { className: "h-4 w-4 text-green-500" });
     case 'economic':
-      return <TrendingUp className="h-4 w-4 text-yellow-500" />;
+      return React.createElement(TrendingUp, { className: "h-4 w-4 text-yellow-500" });
     case 'legal':
-      return <Gavel className="h-4 w-4 text-red-500" />;
+      return React.createElement(Gavel, { className: "h-4 w-4 text-red-500" });
     default:
-      return <Calendar className="h-4 w-4 text-gray-500" />;
+      return React.createElement(Calendar, { className: "h-4 w-4 text-gray-500" });
   }
 };
 
