@@ -3,6 +3,7 @@ import React from 'react';
 import Header from '@/components/Header';
 import CurrentEvents from '@/components/CurrentEvents';
 import ForeignTravelersData from '@/components/ForeignTravelersData';
+import FirstHundredDaysSection from '@/components/FirstHundredDaysSection';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -26,6 +27,7 @@ const Index = () => {
         </section>
         
         <div className="space-y-12">
+          <FirstHundredDaysSection />
           <CurrentEvents />
           <ForeignTravelersData />
         </div>
