@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -161,6 +160,32 @@ const BusinessControversies = () => {
             <p className="text-gray-700">
               By the time of his first presidential campaign in 2016, Trump or his companies had been involved in over 3,500 lawsuits, including cases as both plaintiff and defendant. These ranged from contract disputes to employment issues and allegations of fraud.
             </p>
+            
+            <div className="mt-4 space-y-4">
+              <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <h3 className="font-semibold text-trump-blue mb-2">Housing Discrimination (1973)</h3>
+                <p className="text-gray-700 text-sm">
+                  The Justice Department sued Trump Management Corporation for discriminating against Black rental applicants. 
+                  The lawsuit was eventually settled with a consent decree requiring the Trump company to change its rental practices.
+                </p>
+              </div>
+              
+              <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <h3 className="font-semibold text-trump-blue mb-2">Trump University Settlement (2016)</h3>
+                <p className="text-gray-700 text-sm">
+                  After extensive litigation, Trump agreed to pay $25 million to settle fraud allegations related to Trump University. 
+                  The settlement covered two class-action lawsuits and a civil case filed by the New York Attorney General.
+                </p>
+              </div>
+              
+              <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <h3 className="font-semibold text-trump-blue mb-2">Trump Foundation (2016)</h3>
+                <p className="text-gray-700 text-sm">
+                  The Donald J. Trump Foundation faced scrutiny for alleged misuse of charitable funds. 
+                  The foundation was eventually dissolved under judicial supervision, with assets distributed to approved charities.
+                </p>
+              </div>
+            </div>
           </section>
 
           <section className="bg-white rounded-lg shadow-md p-6">
@@ -172,9 +197,17 @@ const BusinessControversies = () => {
               <li><span className="font-semibold">ABI</span> - "Examining Donald Trump's Chapter 11 Bankruptcies"</li>
               <li><span className="font-semibold">Miller Center</span> - "Donald Trump: Life Before the Presidency" (2025)</li>
               <li><span className="font-semibold">The Washington Post</span> - "The Business Disasters That Trump Doesn't Want You to Know About" (2016)</li>
+              <li><span className="font-semibold">The Washington Post</span> - "Trump Foundation Faces Scrutiny for Donations" (September 13, 2016)</li>
               <li><span className="font-semibold">Forbes</span> - "How Donald Trump Turned Around His Business Failures" (2018)</li>
+              <li><span className="font-semibold">The New York Times</span> - "Justice Department Sues Trump Firm for Bias" (October 16, 1973)</li>
+              <li><span className="font-semibold">The New York Times</span> - "Trump Agrees to Pay $25 Million in Trump University Settlement" (November 18, 2016)</li>
+              <li><span className="font-semibold">The New York Times</span> - Multiple Articles (2010-2016) - "Trump University Investigation"</li>
+              <li><span className="font-semibold">The Wall Street Journal</span> - Coverage of Trump's Business Disputes and Casino Fines</li>
               <li><span className="font-semibold">Wikipedia</span> - "Business Career of Donald Trump" (2025)</li>
             </ul>
+            <p className="mt-4 text-sm text-gray-600 italic">
+              Note: Full articles can be accessed via ProQuest, LexisNexis, or newspaper archives like nytimes.com/archives.
+            </p>
           </section>
         </div>
       </main>
