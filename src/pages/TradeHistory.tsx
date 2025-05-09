@@ -2,6 +2,7 @@
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import TradeBalanceInfo from '@/components/TradeBalanceInfo';
 
 const TradeHistory = () => {
   return (
@@ -21,6 +22,8 @@ const TradeHistory = () => {
         </section>
         
         <div className="space-y-8">
+          <TradeBalanceInfo />
+          
           <section className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-2xl font-bold text-trump-blue mb-4">Trade Imbalance When the U.S. Was the Top Manufacturing Nation</h2>
             <p className="text-gray-700">

@@ -4,7 +4,9 @@ import Header from '@/components/Header';
 import CurrentEvents from '@/components/CurrentEvents';
 import ForeignTravelersData from '@/components/ForeignTravelersData';
 import FirstHundredDaysSection from '@/components/FirstHundredDaysSection';
+import MarketImpact from '@/components/MarketImpact';
 import Footer from '@/components/Footer';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
   return (
@@ -23,11 +25,23 @@ const Index = () => {
                 View 2017-2021 presidency →
               </a>
             </p>
+            <div className="flex justify-center mt-4 space-x-4 text-sm">
+              <Link to="/trade-history" className="text-trump-blue hover:text-trump-red underline">
+                Trade History & Economics
+              </Link>
+              <Link to="/business-controversies" className="text-trump-blue hover:text-trump-red underline">
+                Business Controversies
+              </Link>
+              <Link to="/trump-x-posts" className="text-trump-blue hover:text-trump-red underline">
+                Trump X Posts
+              </Link>
+            </div>
           </div>
         </section>
         
         <div className="space-y-12">
           <FirstHundredDaysSection />
+          <MarketImpact />
           <CurrentEvents />
           <ForeignTravelersData />
         </div>
