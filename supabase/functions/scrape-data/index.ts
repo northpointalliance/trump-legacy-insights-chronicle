@@ -82,10 +82,7 @@ Deno.serve(async (req) => {
           },
           body: JSON.stringify({
             url: target.url,
-            formats: [
-              'markdown',
-              { type: 'json', prompt: target.prompt },
-            ],
+            formats: ['markdown'],
             onlyMainContent: true,
           }),
         });
@@ -99,7 +96,12 @@ Deno.serve(async (req) => {
         }
 
         // Extract the JSON data from the scrape
-        const extractedData = scrapeData.data?.json || scrapeData.data?.markdown || scrapeData.data;
+        const extractedData = {
+          markdown: scrapeData.data?.markdown || scrapeData.markdown,
+          metadata: scrapeData.data?.metadata || scrapeData.metadata,
+          scrapedFrom: target.url,
+          extractionPrompt: target.prompt,
+        };
 
         // Store in database
         const { error: insertError } = await supabase
