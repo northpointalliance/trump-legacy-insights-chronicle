@@ -6,6 +6,7 @@ import ForeignTravelersData from '@/components/ForeignTravelersData';
 import FirstHundredDaysSection from '@/components/FirstHundredDaysSection';
 import MarketImpact from '@/components/MarketImpact';
 import BankruptcyTracker from '@/components/BankruptcyTracker';
+import DataFreshnessIndicator from '@/components/DataFreshnessIndicator';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
 
@@ -40,6 +41,7 @@ const Index = () => {
           </div>
         </section>
         
+        <DataFreshnessIndicator />
         <div className="space-y-12">
           <FirstHundredDaysSection />
           <MarketImpact />
