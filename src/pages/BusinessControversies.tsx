@@ -8,6 +8,11 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 const BusinessControversies = () => {
   return (
     <div className="flex flex-col min-h-screen bg-trump-gray">
+      <SEO
+        title="Trump Business Failures & Controversies | Trump Legacy Insights"
+        description="Historical overview of Donald Trump's major business ventures, bankruptcies, lawsuits, and controversies prior to his presidency."
+        path="/business-controversies"
+      />
       <Header />
       
       <main className="flex-1 container mx-auto px-4 py-8">

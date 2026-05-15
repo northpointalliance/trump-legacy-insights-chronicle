@@ -64,6 +64,11 @@ const TrumpXPosts = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-trump-gray">
+      <SEO
+        title="Notable Trump X / Twitter Posts | Trump Legacy Insights"
+        description="A documented record of notable and controversial posts from Donald Trump on X (formerly Twitter) with dates and context."
+        path="/trump-x-posts"
+      />
       <Header />
       
       <main className="flex-1 container mx-auto px-4 py-8">

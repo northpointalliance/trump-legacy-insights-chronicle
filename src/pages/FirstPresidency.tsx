@@ -9,6 +9,11 @@ import Footer from '@/components/Footer';
 const FirstPresidency = () => {
   return (
     <div className="flex flex-col min-h-screen bg-trump-gray">
+      <SEO
+        title="The First Trump Presidency 2017–2021 | Trump Legacy Insights"
+        description="Comprehensive overview of key events, policies, cabinet turnover, and market impacts during Donald Trump's first term as President."
+        path="/first-presidency"
+      />
       <Header />
       
       <main className="flex-1 container mx-auto px-4 py-8">

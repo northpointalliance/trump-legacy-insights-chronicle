@@ -8,6 +8,11 @@ import { Tv, Users } from 'lucide-react';
 const FoxNews = () => {
   return (
     <div className="flex flex-col min-h-screen bg-trump-gray">
+      <SEO
+        title="Fox News & Trump Campaign Rallies | Trump Legacy Insights"
+        description="Analysis of the relationship between Fox News coverage and Trump campaign rallies, and its influence on political messaging."
+        path="/fox-news"
+      />
       <Header />
       
       <main className="flex-1 container mx-auto px-4 py-8">
