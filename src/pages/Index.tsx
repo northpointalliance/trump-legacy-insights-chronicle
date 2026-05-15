@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Header from '@/components/Header';
+import SEO from '@/components/SEO';
 import CurrentEvents from '@/components/CurrentEvents';
 import ForeignTravelersData from '@/components/ForeignTravelersData';
 import FirstHundredDaysSection from '@/components/FirstHundredDaysSection';
@@ -14,6 +15,11 @@ import { Link } from 'react-router-dom';
 const Index = () => {
   return (
     <div className="flex flex-col min-h-screen bg-trump-gray">
+      <SEO
+        title="Trump Legacy Insights Chronicle — Tracking the Second Trump Presidency"
+        description="Live tracking of the second Trump presidency: cabinet turnover, market impact, tariffs, travel, and bankruptcies with sourced data."
+        path="/"
+      />
       <Header />
       
       <main className="flex-1 container mx-auto px-4 py-8">

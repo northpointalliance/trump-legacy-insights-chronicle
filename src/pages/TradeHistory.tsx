@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Header from '@/components/Header';
+import SEO from '@/components/SEO';
 import Footer from '@/components/Footer';
 import TradeBalanceInfo from '@/components/TradeBalanceInfo';
 import { ExternalLink, Calendar } from 'lucide-react';
@@ -92,6 +93,11 @@ const tagColors: Record<RecentSource['tag'], string> = {
 const TradeHistory = () => {
   return (
     <div className="flex flex-col min-h-screen bg-trump-gray">
+      <SEO
+        title="Trade History & Tariffs Analysis | Trump Legacy Insights"
+        description="Historical and current analysis of U.S. trade policy, tariffs, deficits, and GDP impact under the Trump administrations, with sourced reporting."
+        path="/trade-history"
+      />
       <Header />
       
       <main className="flex-1 container mx-auto px-4 py-8">

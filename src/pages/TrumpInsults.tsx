@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Header from '@/components/Header';
+import SEO from '@/components/SEO';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { MessageSquare } from 'lucide-react';
@@ -9,6 +10,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 const TrumpInsults = () => {
   return (
     <div className="flex flex-col min-h-screen bg-trump-gray">
+      <SEO
+        title="Trump's Public Insults Catalog | Trump Legacy Insights"
+        description="Documented insults from Donald Trump directed at politicians, journalists, celebrities, and other public figures."
+        path="/trump-insults"
+      />
       <Header />
       
       <main className="flex-1 container mx-auto px-4 py-8">

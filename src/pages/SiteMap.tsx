@@ -1,12 +1,18 @@
 
 import React from 'react';
 import Header from '@/components/Header';
+import SEO from '@/components/SEO';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
 
 const SiteMap = () => {
   return (
     <div className="flex flex-col min-h-screen bg-trump-gray">
+      <SEO
+        title="Site Map | Trump Legacy Insights Chronicle"
+        description="Browse all pages available on Trump Legacy Insights Chronicle, including trade history, cabinet turnover, X posts, and more."
+        path="/sitemap"
+      />
       <Header />
       
       <main className="flex-1 container mx-auto px-4 py-8">

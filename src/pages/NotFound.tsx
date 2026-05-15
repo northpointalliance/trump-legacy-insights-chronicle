@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 const NotFound = () => {
   const location = useLocation();
@@ -13,6 +14,17 @@ const NotFound = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <Helmet>
+        <title>Page Not Found | Trump Legacy Insights Chronicle</title>
+        <meta name="description" content="The page you are looking for does not exist on Trump Legacy Insights Chronicle." />
+        <meta name="robots" content="noindex" />
+        <meta property="og:title" content="Page Not Found | Trump Legacy Insights Chronicle" />
+        <meta property="og:description" content="The page you are looking for does not exist." />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Page Not Found | Trump Legacy Insights Chronicle" />
+        <meta name="twitter:description" content="The page you are looking for does not exist." />
+      </Helmet>
       <div className="text-center">
         <h1 className="text-4xl font-bold mb-4">404</h1>
         <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
