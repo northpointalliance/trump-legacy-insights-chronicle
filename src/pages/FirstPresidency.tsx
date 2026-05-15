@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Header from '@/components/Header';
+import SEO from '@/components/SEO';
 import EventTimeline from '@/components/EventTimeline';
 import MarketImpact from '@/components/MarketImpact';
 import Footer from '@/components/Footer';

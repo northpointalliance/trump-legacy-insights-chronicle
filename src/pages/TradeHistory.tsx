@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Header from '@/components/Header';
+import SEO from '@/components/SEO';
 import Footer from '@/components/Footer';
 import TradeBalanceInfo from '@/components/TradeBalanceInfo';
 import { ExternalLink, Calendar } from 'lucide-react';

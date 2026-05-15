@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '@/components/Header';
+import SEO from '@/components/SEO';
 import Footer from '@/components/Footer';
 import { BriefcaseBusiness, DollarSign, File, Gavel, AlertTriangle, Banknote, Minus } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
