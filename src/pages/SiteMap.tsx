@@ -66,6 +66,12 @@ const SiteMap = () => {
               </Link>
               <p className="text-gray-600">Documented insults directed at politicians, celebrities, journalists, and other public figures</p>
             </li>
+            <li className="border-b pb-2">
+              <Link to="/congressional-departures" className="text-xl text-trump-blue hover:text-trump-red transition-colors">
+                Congressional Departures (2017–2021)
+              </Link>
+              <p className="text-gray-600">Resignations, retirements, and turnover in the 115th and 116th Congresses during Trump's first term</p>
+            </li>
           </ul>
           
           <h2 className="text-2xl font-bold text-trump-blue my-6">Sections on Home Page</h2>
