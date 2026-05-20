@@ -51,6 +51,9 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           <Link to="/trump-insults" className="hover:text-trump-red transition-colors duration-200 flex items-center px-2 py-1">
             <MessageSquare className="mr-1 h-4 w-4" /> Insults
           </Link>
+          <Link to="/congressional-departures" className="hover:text-trump-red transition-colors duration-200 px-2 py-1">
+            Congress Departures
+          </Link>
           <Link to="/sitemap" className="hover:text-trump-red transition-colors duration-200 px-2 py-1">
             Site Map
           </Link>
