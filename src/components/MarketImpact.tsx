@@ -3,7 +3,7 @@ import { DollarSign, TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { marketReactionsByTerm, PresidentialTerm } from '@/data/marketData';
+import { marketReactionsByTerm, termSummaries, PresidentialTerm } from '@/data/marketData';
 import {
   LineChart,
   Line,
@@ -39,15 +39,18 @@ const termCopy: Record<PresidentialTerm, {
 
 const MarketImpact: React.FC<MarketImpactProps> = ({ className, term = 'second' }) => {
   const copy = termCopy[term];
+  const summary = termSummaries[term];
 
   const marketData = marketReactionsByTerm[term].map(reaction => ({
     id: reaction.id,
     name: reaction.event,
     detail: reaction.detail,
     window: reaction.window,
-    date: new Date(reaction.date).toLocaleDateString('en-US', {
+    // Several events fall in the same month, so the axis label needs the day.
+    date: new Date(`${reaction.date}T00:00:00`).toLocaleDateString('en-US', {
       month: 'short',
-      year: 'numeric'
+      day: 'numeric',
+      year: '2-digit'
     }),
     stockMarket: reaction.stockMarket.percentChange,
     dollarIndex: reaction.dollarIndex.percentChange,
@@ -94,6 +97,29 @@ const MarketImpact: React.FC<MarketImpactProps> = ({ className, term = 'second' 
           </p>
         ) : (
           <div className="space-y-6">
+            <div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {summary.stats.map((stat) => (
+                  <div key={stat.label} className="bg-white p-4 rounded-lg shadow-sm border">
+                    <div className="text-sm text-gray-500">{stat.label}</div>
+                    <div
+                      className={cn(
+                        'text-2xl font-bold',
+                        stat.value.startsWith('-') ? 'text-trump-red' : 'text-green-600'
+                      )}
+                    >
+                      {stat.value}
+                    </div>
+                    <div className="text-xs text-muted-foreground mt-1">{stat.detail}</div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-sm text-gray-600 mt-3">{summary.note}</p>
+              <p className="text-xs text-muted-foreground mt-1">
+                Term to date: {summary.window}.
+              </p>
+            </div>
+
             <div className="h-80 w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={marketData}>
@@ -146,10 +172,12 @@ const MarketImpact: React.FC<MarketImpactProps> = ({ className, term = 'second' 
 
             <div className="border-t pt-4 text-sm text-muted-foreground space-y-2">
               <p>
-                Stock market figures are Dow Jones Industrial Average closing levels. Dollar
-                figures are the ICE U.S. Dollar Index. Treasury figures are the 10-year constant
-                maturity yield, with changes shown in basis points. All moves are close-to-close
-                over the window noted on each card.
+                Stock market figures are Dow Jones Industrial Average closing levels and Treasury
+                figures are the 10-year constant maturity yield, both from the St. Louis Fed (FRED
+                series DJIA and DGS10). Dollar figures are the ICE U.S. Dollar Index. All moves are
+                close-to-close over the window noted on each card; where an announcement landed on
+                a weekend, a holiday, or after the closing bell, the "before" figure is the last
+                close ahead of it.
               </p>
               <p>
                 <Link to={copy.crossLink.to} className="text-trump-blue hover:text-trump-red">
