@@ -1,8 +1,16 @@
+export type PresidentialTerm = 'first' | 'second';
 
 export interface MarketData {
   id: number;
   date: string;
-  eventId: number; // References the presidencyEvents.ts id
+  /** Label shown on the chart and reaction cards. */
+  event: string;
+  /** One line on what markets were actually reacting to. */
+  detail: string;
+  /** Optional cross-reference into presidencyEvents.ts. */
+  eventId?: number;
+  /** Trading sessions used for the before/after comparison. */
+  window: string;
   stockMarket: {
     before: number;
     after: number;
@@ -20,11 +28,18 @@ export interface MarketData {
   };
 }
 
-export const marketReactions: MarketData[] = [
+// Stock market figures are Dow Jones Industrial Average closing levels.
+// Dollar figures are the ICE U.S. Dollar Index (DXY). Treasury figures are the
+// 10-year constant maturity yield.
+
+export const firstTermMarketReactions: MarketData[] = [
   {
     id: 1,
     date: '2017-01-20',
-    eventId: 1, // Inauguration
+    event: 'Inauguration',
+    detail: 'Markets extended the post-election "Trump trade" on expectations of tax cuts and deregulation.',
+    eventId: 1,
+    window: 'Jan 20 close to Jan 25 close, 2017',
     stockMarket: {
       before: 19827.25,
       after: 20093.78,
@@ -44,7 +59,10 @@ export const marketReactions: MarketData[] = [
   {
     id: 2,
     date: '2017-01-23',
-    eventId: 2, // TPP Withdrawal
+    event: 'TPP Withdrawal',
+    detail: 'The first formal break with a multilateral trade agreement, signed on the first full working day.',
+    eventId: 2,
+    window: 'Jan 20 close to Jan 23 close, 2017',
     stockMarket: {
       before: 19827.25,
       after: 19799.85,
@@ -64,7 +82,10 @@ export const marketReactions: MarketData[] = [
   {
     id: 3,
     date: '2017-12-22',
-    eventId: 5, // Tax Cuts
+    event: 'Tax Cuts and Jobs Act',
+    detail: 'The corporate rate cut from 35% to 21% was the term\'s largest single boost to expected earnings.',
+    eventId: 5,
+    window: 'Dec 21 close to Dec 26 close, 2017',
     stockMarket: {
       before: 24782.29,
       after: 25075.13,
@@ -84,7 +105,10 @@ export const marketReactions: MarketData[] = [
   {
     id: 4,
     date: '2018-05-08',
-    eventId: 6, // Iran Deal Withdrawal
+    event: 'Iran Nuclear Deal Withdrawal',
+    detail: 'Withdrawal from the JCPOA lifted crude prices and the dollar on renewed sanctions risk.',
+    eventId: 6,
+    window: 'May 8 close to May 9 close, 2018',
     stockMarket: {
       before: 24357.32,
       after: 24542.54,
@@ -104,7 +128,10 @@ export const marketReactions: MarketData[] = [
   {
     id: 5,
     date: '2020-01-15',
-    eventId: 10, // China Trade Deal
+    event: 'Phase One Trade Deal with China',
+    detail: 'The truce that ended the first-term trade war, weeks before the pandemic repriced everything.',
+    eventId: 10,
+    window: 'Jan 15 close to Jan 17 close, 2020',
     stockMarket: {
       before: 28939.67,
       after: 29348.10,
@@ -122,3 +149,13 @@ export const marketReactions: MarketData[] = [
     }
   }
 ];
+
+export const secondTermMarketReactions: MarketData[] = [];
+
+/** Back-compat alias for the original first-term dataset. */
+export const marketReactions = firstTermMarketReactions;
+
+export const marketReactionsByTerm: Record<PresidentialTerm, MarketData[]> = {
+  first: firstTermMarketReactions,
+  second: secondTermMarketReactions
+};

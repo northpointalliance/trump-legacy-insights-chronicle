@@ -52,7 +52,7 @@ const Index = () => {
         <div className="space-y-12">
           <FirstHundredDaysSection />
           <RecentCabinetFirings />
-          <MarketImpact />
+          <MarketImpact term="second" />
           <BankruptcyTracker />
           <CurrentEvents />
           <ForeignTravelersData />

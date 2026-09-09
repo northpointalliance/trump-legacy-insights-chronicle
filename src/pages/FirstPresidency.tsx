@@ -30,7 +30,7 @@ const FirstPresidency = () => {
         
         <div className="space-y-12">
           <EventTimeline />
-          <MarketImpact />
+          <MarketImpact term="first" />
         </div>
       </main>
       
