@@ -122,13 +122,29 @@ const MarketImpact: React.FC<MarketImpactProps> = ({ className, term = 'second' 
 
             <div className="h-80 w-full">
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={marketData}>
+                <LineChart data={marketData} margin={{ top: 5, right: 10, bottom: 5, left: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="date" />
-                  <YAxis />
-                  <Tooltip />
+                  <XAxis dataKey="date" tick={{ fontSize: 12 }} />
+                  {/* Percent moves and basis-point moves need separate scales. */}
+                  <YAxis
+                    yAxisId="percent"
+                    tickFormatter={(v: number) => `${v}%`}
+                    tick={{ fontSize: 12 }}
+                  />
+                  <YAxis
+                    yAxisId="basisPoints"
+                    orientation="right"
+                    tickFormatter={(v: number) => `${v}bp`}
+                    tick={{ fontSize: 12 }}
+                  />
+                  <Tooltip
+                    formatter={(value: number, name: string) =>
+                      `${value > 0 ? '+' : ''}${value}${name.includes('bp') ? ' bp' : '%'}`
+                    }
+                  />
                   <Legend />
                   <Line
+                    yAxisId="percent"
                     type="monotone"
                     dataKey="stockMarket"
                     name="Dow Change (%)"
@@ -136,12 +152,14 @@ const MarketImpact: React.FC<MarketImpactProps> = ({ className, term = 'second' 
                     activeDot={{ r: 8 }}
                   />
                   <Line
+                    yAxisId="percent"
                     type="monotone"
                     dataKey="dollarIndex"
                     name="Dollar Index Change (%)"
                     stroke="#B22234"
                   />
                   <Line
+                    yAxisId="basisPoints"
                     type="monotone"
                     dataKey="treasuryYield"
                     name="Treasury Yield Change (bp)"
@@ -177,7 +195,8 @@ const MarketImpact: React.FC<MarketImpactProps> = ({ className, term = 'second' 
                 series DJIA and DGS10). Dollar figures are the ICE U.S. Dollar Index. All moves are
                 close-to-close over the window noted on each card; where an announcement landed on
                 a weekend, a holiday, or after the closing bell, the "before" figure is the last
-                close ahead of it.
+                close ahead of it. On the chart, percentage moves read off the left axis and
+                basis-point moves off the right.
               </p>
               <p>
                 <Link to={copy.crossLink.to} className="text-trump-blue hover:text-trump-red">
