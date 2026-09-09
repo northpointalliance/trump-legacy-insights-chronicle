@@ -72,6 +72,12 @@ const SiteMap = () => {
               </Link>
               <p className="text-gray-600">Resignations, retirements, and turnover in the 115th and 116th Congresses during Trump's first term</p>
             </li>
+            <li className="border-b pb-2">
+              <Link to="/epstein-files" className="text-xl text-trump-blue hover:text-trump-red transition-colors">
+                Epstein Files Transparency Act
+              </Link>
+              <p className="text-gray-600">The law Trump signed in November 2025, the records still withheld, and the GOP leadership blocks on enforcing it</p>
+            </li>
           </ul>
           
           <h2 className="text-2xl font-bold text-trump-blue my-6">Sections on Home Page</h2>
