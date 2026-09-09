@@ -13,6 +13,7 @@ import SiteMap from "./pages/SiteMap";
 import NotFound from "./pages/NotFound";
 import FirstPresidency from "./pages/FirstPresidency";
 import CongressionalDepartures from "./pages/CongressionalDepartures";
+import EpsteinFiles from "./pages/EpsteinFiles";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/trump-x-posts" element={<TrumpXPosts />} />
           <Route path="/trump-insults" element={<TrumpInsults />} />
           <Route path="/congressional-departures" element={<CongressionalDepartures />} />
+          <Route path="/epstein-files" element={<EpsteinFiles />} />
           <Route path="/sitemap" element={<SiteMap />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
