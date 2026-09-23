@@ -38,8 +38,8 @@ GitHub (main) ──push──> Cloudflare Pages build ──> thepresidencyledg
 
 | From | To | Where it is set | Status |
 |---|---|---|---|
-| `trump-legacy-insights-chronicle.pages.dev/*` | `https://thepresidencyledger.com/*` (301) | Cloudflare Bulk Redirects (account level) | to set up |
-| `www.thepresidencyledger.com/*` | `https://thepresidencyledger.com/*` (301) | Cloudflare Redirect Rule on the zone, plus a proxied `www` DNS record | to set up |
+| `trump-legacy-insights-chronicle.pages.dev/*` | `https://thepresidencyledger.com/*` (301) | `functions/_middleware.js` (301, keeps path and query) | live after push |
+| `www.thepresidencyledger.com/*` | `https://thepresidencyledger.com/*` (301) | `functions/_middleware.js`, once `www.thepresidencyledger.com` is added as a Pages custom domain | needs custom domain |
 | `/first-presidency` and `/first-presidency/` | `/first-term/timeline/` (301) | `site/_redirects` | live |
 
 The old first-term site at `first-term-trump-legacy.pages.dev` is a separate Pages project in a different Cloudflare account. The pages here no longer link to it; `/first-term/` replaces it.
@@ -49,8 +49,7 @@ The old first-term site at `first-term-trump-legacy.pages.dev` is a separate Pag
 - GA4 property: "The Presidency Ledger" (account NorthpointAlliance, 80522266).
 - Web stream: `https://thepresidencyledger.com`, stream ID 15832094049.
 - Measurement ID: `G-PR9H0FQNJC`.
-- Status: property and stream created; Zaraz install still to do.
-- Installed through Cloudflare Zaraz, so no tracking code is in the HTML. Zaraz only runs on the proxied custom domain, which is why pages.dev must redirect to it.
+- Installed by `scripts/build.mjs`, which adds the gtag snippet to every page at build time. It only sends data when the hostname is thepresidencyledger.com, so previews are not counted.
 
 ## Federal Corruption Tracker (/accountability/)
 
@@ -68,7 +67,7 @@ The old first-term site at `first-term-trump-legacy.pages.dev` is a separate Pag
 
 ## Email
 
-- `info@thepresidencyledger.com` through Cloudflare Email Routing (forwarding only). Status: to set up.
+- `info@thepresidencyledger.com` through Cloudflare Email Routing (forwarding only). Status: live, forwards to the owner's Gmail.
 
 ## SEO, AEO, and GEO conventions
 

@@ -10,6 +10,11 @@ import { accountabilityPage, newsWirePage } from "./pages.mjs";
 const SRC = "site";
 const OUT = "dist";
 const OLD_HOST = "trump-legacy-insights-chronicle.pages.dev";
+// Google Analytics 4 (property "The Presidency Ledger", stream 15832094049)
+const GA_ID = "G-PR9H0FQNJC";
+const GA_TAG = `<script async src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());if(location.hostname==='thepresidencyledger.com'){gtag('config','${GA_ID}');}</script>
+`;
 
 rmSync(OUT, { recursive: true, force: true });
 cpSync(SRC, OUT, { recursive: true });
@@ -24,6 +29,18 @@ for (const [dir, html] of [
   mkdirSync(join(OUT, dir), { recursive: true });
   writeFileSync(join(OUT, dir, "index.html"), html);
 }
+
+// Add the GA4 tag to every HTML page (only reports on the real domain)
+const addTag = (dir) => {
+  for (const name of readdirSync(dir)) {
+    const p = join(dir, name);
+    if (statSync(p).isDirectory()) { addTag(p); continue; }
+    if (!name.endsWith(".html")) continue;
+    const h = readFileSync(p, "utf8");
+    if (!h.includes(GA_ID)) writeFileSync(p, h.replace("</head>", "  " + GA_TAG + "</head>"));
+  }
+};
+addTag(OUT);
 
 const bad = [];
 let count = 0;
