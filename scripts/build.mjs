@@ -5,7 +5,7 @@
 import { cpSync, rmSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { mkdirSync, writeFileSync } from "node:fs";
-import { accountabilityPage, newsWirePage } from "./pages.mjs";
+import { accountabilityPage, newsWirePage, departuresSection, headlinesSection } from "./pages.mjs";
 
 const SRC = "site";
 const OUT = "dist";
@@ -28,6 +28,20 @@ for (const [dir, html] of [
 ]) {
   mkdirSync(join(OUT, dir), { recursive: true });
   writeFileSync(join(OUT, dir, "index.html"), html);
+}
+
+// Homepage sections rendered from data files
+{
+  const p = join(OUT, "index.html");
+  let h = readFileSync(p, "utf8");
+  const swap = (id, html) => {
+    const re = new RegExp(`<section id="${id}"[\\s\\S]*?</section>`);
+    if (!re.test(h)) { console.error(`Build failed: section #${id} not found on homepage`); process.exit(1); }
+    h = h.replace(re, html);
+  };
+  swap("recent-firings", departuresSection(readJson("data/departures.json")));
+  swap("current-events", headlinesSection(readJson("data/outlets.json")));
+  writeFileSync(p, h);
 }
 
 // Add the GA4 tag to every HTML page (only reports on the real domain)

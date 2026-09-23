@@ -93,3 +93,31 @@ export function newsWirePage(src, outlets) {
   const jsonld = { "@context": "https://schema.org", "@type": "CollectionPage", name: "Who is covering Trump today?", description: `Live Trump headlines from ${n} news organizations, linked to the original publishers.`, url: ORIGIN + path, isPartOf: { "@type": "WebSite", name: BRAND, url: ORIGIN + "/" }, publisher: { "@type": "Organization", name: BRAND, url: ORIGIN + "/" } };
   return shell(src, { path, title: "Who Is Covering Trump Today? News Wire", description: `Live Trump headlines from ${n} news organizations, from AP and Reuters to Fox News and the BBC, each linked to the original story.`, jsonld, main });
 }
+
+// Homepage section: second-term departures, from data/departures.json
+export function departuresSection(data) {
+  const rows = [...data.entries].sort((a, b) => b.date.localeCompare(a.date));
+  const cabinet = rows.filter((e) => /^Secretary|Attorney General$|Director of National Intelligence/.test(e.role)).length;
+  const items = rows.map((e) => `    <article class="border border-sky-100 rounded-lg p-4">
+      <h3 class="font-bold">${esc(e.name)}, ${esc(e.role)}</h3>
+      <p class="text-sm text-slate-500"><time datetime="${e.date}">${d(e.date)}</time> · ${esc(e.how)}</p>
+      <p class="prose-block mt-2">${esc(e.note)} ${e.sources.map((s) => `<a href="${esc(s.url)}" class="text-accent-dark hover:underline" rel="noopener noreferrer" target="_blank">${esc(s.publisher)}</a>`).join(" · ")}</p>
+    </article>`).join("\n");
+  return `<section id="recent-firings" class="card mb-10">
+  <h2 class="text-2xl font-bold text-brand-blue mb-3">Who has left the second-term cabinet or senior staff?</h2>
+  <p class="prose-block mb-6">At least ${cabinet} Cabinet-level officials have left since January 2025, including Homeland Security Secretary Kristi Noem and Attorney General Pam Bondi in spring 2026, and Director of National Intelligence Tulsi Gabbard in May 2026. Press Secretary Karoline Leavitt left in August 2026. The most significant departures are listed below, newest first. Last reviewed <time datetime="${data.lastReviewed}">${d(data.lastReviewed)}</time>. Full lists: ${data.fullLists.map((l) => `<a href="${esc(l.url)}" class="text-accent-dark hover:underline" rel="noopener">${esc(l.name)}</a>`).join(", ")}.</p>
+  <div class="space-y-4">
+${items}
+  </div>
+</section>`;
+}
+
+// Homepage section: points to the live News Wire instead of a frozen list
+export function headlinesSection(outlets) {
+  const n = outlets.groups.reduce((k, g) => k + g.outlets.length, 0);
+  return `<section id="current-events" class="card mb-10">
+  <h2 class="text-2xl font-bold text-brand-blue mb-3">What are the latest headlines on the second administration?</h2>
+  <p class="prose-block mb-4">Today's Trump coverage from ${n} news organizations, from the Associated Press, Reuters, and Bloomberg to Fox News, Newsmax, the New York Times, and the BBC, is collected on the News Wire and refreshed about every 20 minutes. Every headline links to the original publisher.</p>
+  <p><a href="/news-wire/" class="font-semibold text-accent-dark hover:text-brand-red">Open the News Wire: who is covering Trump today?</a></p>
+</section>`;
+}

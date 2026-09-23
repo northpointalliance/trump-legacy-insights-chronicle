@@ -27,6 +27,7 @@ site/                  the website (37 files)
   404.html             "page not found" page
 data/accountability.json  cases in the Federal Corruption Tracker (/accountability/)
 data/outlets.json      news organizations shown on the News Wire (/news-wire/)
+data/departures.json   second-term departures shown on the homepage
 functions/news-wire/   Cloudflare Pages Function that fills /news-wire/ with live headlines
 scripts/build.mjs      copies site/ to dist/, renders the data pages, blocks old pages.dev links
 scripts/pages.mjs      templates for the tracker and news wire pages
@@ -46,6 +47,10 @@ docs/ai-build-lessons.md  rules for any AI agent working on this repo (read firs
 3. Update `lastReviewed` at the top, then push to `main`.
 
 A post on X is a lead, not a source. Only add a case once it meets the rule above.
+
+## Update the homepage departures list
+
+Edit `data/departures.json`: add the newest departure at the top of `entries` (name, role, date, how they left, one-line note, sources) and update `lastReviewed`. The homepage section is rebuilt from this file on every push.
 
 ## Change the news wire outlets
 
