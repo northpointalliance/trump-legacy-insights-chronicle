@@ -60,7 +60,7 @@ The old first-term site at `first-term-trump-legacy.pages.dev` is a separate Pag
 
 ## News Wire (/news-wire/)
 
-- Shows the last 24 hours of Trump headlines per outlet, grouped by type, for 22 outlets from AP and Reuters to Fox News, Newsmax, and the BBC.
+- Shows the last 24 hours of Trump headlines per outlet, grouped by type, for 21 outlets from AP and Reuters to Fox News and the BBC.
 - Headlines link to the publisher (through Google News). No article text is copied.
 - If a feed fails, that outlet shows a link to its homepage instead; the rest of the page still loads.
 - Free plan limits: 100,000 function requests per day and 50 outbound requests per request, well above this page's needs because of the 20 minute cache.

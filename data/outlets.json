@@ -3,37 +3,114 @@
   "window": "1d",
   "perOutlet": 4,
   "groups": [
-    {"name": "Wire services", "outlets": [
-      {"name": "Associated Press", "domain": "apnews.com"},
-      {"name": "Reuters", "domain": "reuters.com"},
-      {"name": "Bloomberg", "domain": "bloomberg.com"}
-    ]},
-    {"name": "Broadcast and cable", "outlets": [
-      {"name": "ABC News", "domain": "abcnews.com"},
-      {"name": "CBS News", "domain": "cbsnews.com"},
-      {"name": "NBC News", "domain": "nbcnews.com"},
-      {"name": "CNN", "domain": "cnn.com"},
-      {"name": "Fox News", "domain": "foxnews.com"},
-      {"name": "NPR", "domain": "npr.org"},
-      {"name": "PBS NewsHour", "domain": "pbs.org"}
-    ]},
-    {"name": "Newspapers", "outlets": [
-      {"name": "The New York Times", "domain": "nytimes.com"},
-      {"name": "The Washington Post", "domain": "washingtonpost.com"},
-      {"name": "The Wall Street Journal", "domain": "wsj.com"},
-      {"name": "USA Today", "domain": "usatoday.com"},
-      {"name": "New York Post", "domain": "nypost.com"}
-    ]},
-    {"name": "Politics and digital", "outlets": [
-      {"name": "Politico", "domain": "politico.com"},
-      {"name": "The Hill", "domain": "thehill.com"},
-      {"name": "Axios", "domain": "axios.com"},
-      {"name": "Washington Examiner", "domain": "washingtonexaminer.com"},
-      {"name": "Newsmax", "domain": "newsmax.com"}
-    ]},
-    {"name": "International", "outlets": [
-      {"name": "BBC News", "domain": "bbc.com"},
-      {"name": "The Guardian", "domain": "theguardian.com"}
-    ]}
+    {
+      "name": "Wire services",
+      "outlets": [
+        {
+          "name": "Associated Press",
+          "domain": "apnews.com"
+        },
+        {
+          "name": "Reuters",
+          "domain": "reuters.com"
+        },
+        {
+          "name": "Bloomberg",
+          "domain": "bloomberg.com"
+        }
+      ]
+    },
+    {
+      "name": "Broadcast and cable",
+      "outlets": [
+        {
+          "name": "ABC News",
+          "domain": "abcnews.com"
+        },
+        {
+          "name": "CBS News",
+          "domain": "cbsnews.com"
+        },
+        {
+          "name": "NBC News",
+          "domain": "nbcnews.com"
+        },
+        {
+          "name": "CNN",
+          "domain": "cnn.com"
+        },
+        {
+          "name": "Fox News",
+          "domain": "foxnews.com"
+        },
+        {
+          "name": "NPR",
+          "domain": "npr.org"
+        },
+        {
+          "name": "PBS NewsHour",
+          "domain": "pbs.org"
+        }
+      ]
+    },
+    {
+      "name": "Newspapers",
+      "outlets": [
+        {
+          "name": "The New York Times",
+          "domain": "nytimes.com"
+        },
+        {
+          "name": "The Washington Post",
+          "domain": "washingtonpost.com"
+        },
+        {
+          "name": "The Wall Street Journal",
+          "domain": "wsj.com"
+        },
+        {
+          "name": "USA Today",
+          "domain": "usatoday.com"
+        },
+        {
+          "name": "New York Post",
+          "domain": "nypost.com"
+        }
+      ]
+    },
+    {
+      "name": "Politics and digital",
+      "outlets": [
+        {
+          "name": "Politico",
+          "domain": "politico.com"
+        },
+        {
+          "name": "The Hill",
+          "domain": "thehill.com"
+        },
+        {
+          "name": "Axios",
+          "domain": "axios.com"
+        },
+        {
+          "name": "Washington Examiner",
+          "domain": "washingtonexaminer.com"
+        }
+      ]
+    },
+    {
+      "name": "International",
+      "outlets": [
+        {
+          "name": "BBC News",
+          "domain": "bbc.com"
+        },
+        {
+          "name": "The Guardian",
+          "domain": "theguardian.com"
+        }
+      ]
+    }
   ]
 }

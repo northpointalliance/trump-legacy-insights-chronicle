@@ -117,7 +117,7 @@ export function headlinesSection(outlets) {
   const n = outlets.groups.reduce((k, g) => k + g.outlets.length, 0);
   return `<section id="current-events" class="card mb-10">
   <h2 class="text-2xl font-bold text-brand-blue mb-3">What are the latest headlines on the second administration?</h2>
-  <p class="prose-block mb-4">Today's Trump coverage from ${n} news organizations, from the Associated Press, Reuters, and Bloomberg to Fox News, Newsmax, the New York Times, and the BBC, is collected on the News Wire and refreshed about every 20 minutes. Every headline links to the original publisher.</p>
+  <p class="prose-block mb-4">Today's Trump coverage from ${n} news organizations, from the Associated Press, Reuters, and Bloomberg to Fox News, the New York Times, and the BBC, is collected on the News Wire and refreshed about every 20 minutes. Every headline links to the original publisher.</p>
   <p><a href="/news-wire/" class="font-semibold text-accent-dark hover:text-brand-red">Open the News Wire: who is covering Trump today?</a></p>
 </section>`;
 }
