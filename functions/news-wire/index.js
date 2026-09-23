@@ -19,25 +19,33 @@ export function parseItems(xml, max) {
     const t = (b.match(/<title>([\s\S]*?)<\/title>/) || [])[1];
     const l = (b.match(/<link>([\s\S]*?)<\/link>/) || [])[1];
     if (!t || !l) continue;
-    const src = unxml((b.match(/<source[^>]*>([\s\S]*?)<\/source>/) || [])[1] || "");
+    const srcM = b.match(/<source(?: url="([^"]*)")?[^>]*>([\s\S]*?)<\/source>/) || [];
+    const src = unxml(srcM[2] || "");
+    let host = "";
+    try { host = new URL(unxml(srcM[1] || "")).hostname.replace(/^www\./, ""); } catch {}
     let title = unxml(t);
     if (src && title.endsWith(" - " + src)) title = title.slice(0, -(src.length + 3));
     const pub = (b.match(/<pubDate>([\s\S]*?)<\/pubDate>/) || [])[1];
-    out.push({ title, link: unxml(l), date: pub ? new Date(pub) : null });
+    out.push({ title, link: unxml(l), date: pub ? new Date(pub) : null, host });
   }
   return out;
 }
 
-async function fetchOutlet(o) {
-  const q = `${OUTLETS.query} when:${OUTLETS.window} site:${o.domain}`;
+// One Google News query per group (sites joined with OR) instead of one per
+// outlet: 5 requests instead of 22, which avoids Google's rate limiting.
+async function fetchGroup(g) {
+  const sites = g.outlets.map((o) => "site:" + o.domain).join(" OR ");
+  const q = `${OUTLETS.query} when:${OUTLETS.window} (${sites})`;
   const url = "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=" + encodeURIComponent(q);
+  let items = [];
   try {
     const r = await fetch(url, { cf: { cacheTtl: CACHE_SECONDS, cacheEverything: true }, headers: { "user-agent": "Mozilla/5.0 (compatible; ThePresidencyLedger/1.0; +https://thepresidencyledger.com/news-wire/)" } });
-    if (!r.ok) return { ...o, items: [], error: true };
-    return { ...o, items: parseItems(await r.text(), OUTLETS.perOutlet) };
-  } catch {
-    return { ...o, items: [], error: true };
-  }
+    if (r.ok) items = parseItems(await r.text(), 100);
+  } catch {}
+  return g.outlets.map((o) => ({
+    ...o,
+    items: items.filter((it) => it.host === o.domain || it.host.endsWith("." + o.domain)).slice(0, OUTLETS.perOutlet),
+  }));
 }
 
 const fmt = (d) => (d && !isNaN(d) ? d.toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/New_York", timeZoneName: "short" }) : "");
@@ -71,8 +79,7 @@ export async function onRequestGet({ request, env, waitUntil }) {
 
   const page = await env.ASSETS.fetch(new URL("/news-wire/", request.url));
   const shell = await page.text();
-  const outlets = OUTLETS.groups.flatMap((g) => g.outlets);
-  const results = await Promise.all(outlets.map(fetchOutlet));
+  const results = (await Promise.all(OUTLETS.groups.map(fetchGroup))).flat();
   const body = shell.replace(MARK, render(results, new Date()));
   const res = new Response(body, { headers: { "content-type": "text/html; charset=utf-8", "cache-control": `public, max-age=${CACHE_SECONDS}` } });
   waitUntil(cache.put(key, res.clone()));
