@@ -31,21 +31,50 @@ export function parseItems(xml, max) {
   return out;
 }
 
-// One Google News query per group (sites joined with OR) instead of one per
-// outlet: 5 requests instead of 22, which avoids Google's rate limiting.
+// One query per outlet group (sites joined with OR): 5 requests, not 22.
+// Requests run one after another with a short pause, because Google refuses
+// bursts from Cloudflare. If Google fails for a group, Bing News is tried.
+const UA = { "user-agent": "Mozilla/5.0 (compatible; ThePresidencyLedger/1.0; +https://thepresidencyledger.com/news-wire/)" };
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+async function getText(url) {
+  try {
+    const r = await fetch(url, { headers: UA });
+    return r.ok ? await r.text() : "";
+  } catch { return ""; }
+}
+
+// Bing News RSS: link carries the article address in its url= parameter.
+export function parseBing(xml, max) {
+  return parseItems(xml, max).map((it) => {
+    let real = it.link;
+    try { real = new URL(it.link).searchParams.get("url") || it.link; } catch {}
+    let host = it.host;
+    try { host = new URL(real).hostname.replace(/^www\./, ""); } catch {}
+    return { ...it, link: real, host };
+  });
+}
+
 async function fetchGroup(g) {
   const sites = g.outlets.map((o) => "site:" + o.domain).join(" OR ");
-  const q = `${OUTLETS.query} when:${OUTLETS.window} (${sites})`;
-  const url = "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=" + encodeURIComponent(q);
-  let items = [];
-  try {
-    const r = await fetch(url, { cf: { cacheTtl: CACHE_SECONDS, cacheEverything: true }, headers: { "user-agent": "Mozilla/5.0 (compatible; ThePresidencyLedger/1.0; +https://thepresidencyledger.com/news-wire/)" } });
-    if (r.ok) items = parseItems(await r.text(), 100);
-  } catch {}
+  const q = `${OUTLETS.query} (${sites})`;
+  let items = parseItems(await getText("https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=" + encodeURIComponent(`${OUTLETS.query} when:${OUTLETS.window} (${sites})`)), 100);
+  if (!items.length) items = parseBing(await getText("https://www.bing.com/news/search?format=rss&qft=interval%3d%227%22&q=" + encodeURIComponent(q)), 100);
+  const dayAgo = Date.now() - 36 * 3600 * 1000;
+  items = items.filter((it) => !it.date || isNaN(it.date) || it.date.getTime() > dayAgo);
   return g.outlets.map((o) => ({
     ...o,
     items: items.filter((it) => it.host === o.domain || it.host.endsWith("." + o.domain)).slice(0, OUTLETS.perOutlet),
   }));
+}
+
+async function fetchAll() {
+  const out = [];
+  for (const g of OUTLETS.groups) {
+    out.push(...(await fetchGroup(g)));
+    await sleep(250);
+  }
+  return out;
 }
 
 const fmt = (d) => (d && !isNaN(d) ? d.toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/New_York", timeZoneName: "short" }) : "");
@@ -79,9 +108,10 @@ export async function onRequestGet({ request, env, waitUntil }) {
 
   const page = await env.ASSETS.fetch(new URL("/news-wire/", request.url));
   const shell = await page.text();
-  const results = (await Promise.all(OUTLETS.groups.map(fetchGroup))).flat();
+  const results = await fetchAll();
   const body = shell.replace(MARK, render(results, new Date()));
   const res = new Response(body, { headers: { "content-type": "text/html; charset=utf-8", "cache-control": `public, max-age=${CACHE_SECONDS}` } });
-  waitUntil(cache.put(key, res.clone()));
+  const filled = results.filter((r) => r.items.length).length;
+  if (filled >= results.length / 2) waitUntil(cache.put(key, res.clone()));
   return res;
 }
