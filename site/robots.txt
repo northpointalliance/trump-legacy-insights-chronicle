@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thepresidencyledger.com/sitemap.xml

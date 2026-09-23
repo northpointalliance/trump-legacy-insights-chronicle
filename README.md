@@ -1,73 +1,56 @@
-# Welcome to your Lovable project
+# The Presidency Ledger
 
-## Project info
+A static reference site tracking the Trump presidencies: cabinet turnover, markets, trade, bankruptcies, abuse-of-power cases, and a first-term (2017 to 2021) chronicle. Every page is plain HTML with its sources linked.
 
-**URL**: https://lovable.dev/projects/54e37ef4-9c8a-4f42-bfa1-890fb496c0c4
+**Live:** https://thepresidencyledger.com
 
-## How can I edit this code?
+## How it works
 
-There are several ways of editing your application.
+- The website is the `site/` folder. What is in `site/` is exactly what visitors get.
+- There is no framework, database, or CMS. Lovable and Supabase are no longer used.
+- Cloudflare Pages publishes the site. Every push to `main` goes live automatically.
 
-**Use Lovable**
+## Folder layout
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/54e37ef4-9c8a-4f42-bfa1-890fb496c0c4) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+site/                  the website (37 files)
+  index.html           homepage
+  <section>/index.html one folder per page, e.g. site/first-term/economy/index.html
+  assets/css/main.css  the only stylesheet
+  sitemap.xml          list of pages for Google
+  robots.txt           crawler rules
+  _redirects           old URLs that forward to new ones
+  404.html             "page not found" page
+scripts/build.mjs      copies site/ to dist/ and blocks old pages.dev links
+docs/ARCHITECTURE.md   how the site, hosting, and analytics fit together
 ```
 
-**Edit a file directly in GitHub**
+## Change a page
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. Open the page's `index.html` in `site/` and edit the text.
+2. Commit and push to `main`. Cloudflare rebuilds and publishes it in about a minute.
 
-**Use GitHub Codespaces**
+## Add a page
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. Copy an existing page folder, for example `site/first-term/economy/` to `site/first-term/new-topic/`.
+2. In the new `index.html`, update `<title>`, the meta description, the canonical link, `og:url`, and the JSON-LD `url`. All links use `https://thepresidencyledger.com/...` with a trailing slash.
+3. Add the page to `site/sitemap.xml` and to the list in `site/sitemap/index.html`.
+4. Push to `main`.
 
-## What technologies are used for this project?
+## Deploy
 
-This project is built with:
+| How | What happens |
+|---|---|
+| Push to `main` | Cloudflare Pages runs `npm run build` and publishes `dist/` to production |
+| Push to any other branch | Cloudflare creates a preview link, production is untouched |
+| `npm run deploy` | Manual upload from your computer with wrangler (only if Git deploys are off) |
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Rules for every page
 
-## How can I deploy this project?
+- One absolute canonical: `https://thepresidencyledger.com/<path>/`, no `www`, no query strings.
+- Important content in the HTML itself, not loaded by JavaScript.
+- JSON-LD in the `<head>` that matches what the page says.
+- Question-style headings with the direct answer first.
+- No em dashes.
 
-Simply open [Lovable](https://lovable.dev/projects/54e37ef4-9c8a-4f42-bfa1-890fb496c0c4) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes it is!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+See `docs/ARCHITECTURE.md` for hosting, domain, redirect, and analytics details.
