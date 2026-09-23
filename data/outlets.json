@@ -9,7 +9,7 @@
       {"name": "Bloomberg", "domain": "bloomberg.com"}
     ]},
     {"name": "Broadcast and cable", "outlets": [
-      {"name": "ABC News", "domain": "abcnews.go.com"},
+      {"name": "ABC News", "domain": "abcnews.com"},
       {"name": "CBS News", "domain": "cbsnews.com"},
       {"name": "NBC News", "domain": "nbcnews.com"},
       {"name": "CNN", "domain": "cnn.com"},

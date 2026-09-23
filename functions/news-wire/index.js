@@ -39,7 +39,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function getText(url) {
   try {
-    const r = await fetch(url, { headers: UA });
+    const r = await fetch(url, { headers: UA, signal: AbortSignal.timeout(5000) });
     return r.ok ? await r.text() : "";
   } catch { return ""; }
 }
