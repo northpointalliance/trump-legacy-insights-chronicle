@@ -1,0 +1,132 @@
+{
+  "lastReviewed": "2026-09-23",
+  "scope": "Current and former federal elected officials and executive-branch appointees since 2017, from any party.",
+  "entries": [
+    {
+      "name": "Robert Menendez",
+      "affiliation": "Democrat",
+      "office": "U.S. Senator, New Jersey",
+      "matter": "Bribery, acting as an agent of Egypt, obstruction",
+      "summary": "Convicted by a federal jury in July 2024. Sentenced in January 2025 to 11 years in prison and reported to prison in June 2025.",
+      "status": "Convicted",
+      "statusDetail": "Serving sentence",
+      "statusDate": "2025-06-17",
+      "sources": [
+        {"publisher": "U.S. Department of Justice", "url": "https://www.justice.gov/usao-sdny/pr/former-us-senator-robert-menendez-sentenced-11-years-prison-bribery-foreign-agent-and"},
+        {"publisher": "CBS New York", "url": "https://www.cbsnews.com/newyork/news/bob-menendez-reports-to-prison-for-sentence/"}
+      ]
+    },
+    {
+      "name": "George Santos",
+      "affiliation": "Republican",
+      "office": "U.S. Representative, New York",
+      "matter": "Wire fraud, aggravated identity theft",
+      "summary": "Expelled from the House in December 2023. Pleaded guilty in August 2024 and was sentenced in April 2025 to 87 months. President Trump commuted the sentence in October 2025.",
+      "status": "Convicted",
+      "statusDetail": "Sentence commuted",
+      "statusDate": "2025-10-17",
+      "sources": [
+        {"publisher": "NPR", "url": "https://www.npr.org/2025/10/17/nx-s1-5578304/trump-george-santos-prison-sentence-commuted"},
+        {"publisher": "PBS NewsHour", "url": "https://www.pbs.org/newshour/politics/trump-commutes-7-year-prison-sentence-of-former-rep-george-santos-in-federal-fraud-case"}
+      ]
+    },
+    {
+      "name": "Henry Cuellar",
+      "affiliation": "Democrat",
+      "office": "U.S. Representative, Texas",
+      "matter": "Bribery and conspiracy",
+      "summary": "Indicted in May 2024 on charges of taking bribes linked to Azerbaijan and a Mexican bank. Pleaded not guilty. President Trump pardoned him in December 2025, before trial.",
+      "status": "Charged",
+      "statusDetail": "Pardoned before trial",
+      "statusDate": "2025-12-03",
+      "sources": [
+        {"publisher": "Texas Tribune", "url": "https://www.texastribune.org/2025/12/03/henry-cuellar-donald-trump-pardon-bribery/"},
+        {"publisher": "PBS NewsHour", "url": "https://www.pbs.org/newshour/politics/trump-pardons-cuellar-in-bribery-and-conspiracy-case"}
+      ]
+    },
+    {
+      "name": "Sheila Cherfilus-McCormick",
+      "affiliation": "Democrat",
+      "office": "U.S. Representative, Florida",
+      "matter": "Theft of about $5 million in FEMA funds, illegal campaign contributions",
+      "summary": "Indicted in November 2025. A House Ethics investigative subcommittee reported in March 2026 that it found she violated House rules and federal law. The criminal case is listed as pending until a verdict is verified.",
+      "status": "Charged",
+      "statusDetail": "House Ethics finding, criminal case pending",
+      "statusDate": "2026-03-27",
+      "sources": [
+        {"publisher": "U.S. Department of Justice", "url": "https://www.justice.gov/opa/pr/south-florida-congresswoman-charged-stealing-5-million-fema-funds-and-making-illegal"},
+        {"publisher": "Florida Phoenix", "url": "https://floridaphoenix.com/2026/03/27/cherfilus-mccormick-guilty-of-stealing-laundering-fema-funds-house-ethics-probe-finds/"}
+      ]
+    },
+    {
+      "name": "Duncan Hunter",
+      "affiliation": "Republican",
+      "office": "U.S. Representative, California",
+      "matter": "Conspiracy to misuse campaign funds",
+      "summary": "Pleaded guilty in December 2019 and was sentenced in 2020 to 11 months in prison. President Trump pardoned him in December 2020.",
+      "status": "Convicted",
+      "statusDetail": "Pardoned",
+      "statusDate": "2020-12-22",
+      "sources": [
+        {"publisher": "Roll Call", "url": "https://rollcall.com/2020/12/22/trump-pardons-ex-reps-duncan-hunter-chris-collins/"},
+        {"publisher": "NPR", "url": "https://www.npr.org/2020/12/22/947972044/trump-grants-slew-of-pardons-including-george-papadopoulos-and-duncan-hunter"}
+      ]
+    },
+    {
+      "name": "Chris Collins",
+      "affiliation": "Republican",
+      "office": "U.S. Representative, New York",
+      "matter": "Securities fraud conspiracy (insider trading tip), false statements to the FBI",
+      "summary": "Pleaded guilty in October 2019 and was sentenced in January 2020 to 26 months in prison. President Trump pardoned him in December 2020.",
+      "status": "Convicted",
+      "statusDetail": "Pardoned",
+      "statusDate": "2020-12-22",
+      "sources": [
+        {"publisher": "Roll Call", "url": "https://rollcall.com/2020/12/22/trump-pardons-ex-reps-duncan-hunter-chris-collins/"},
+        {"publisher": "NBC News", "url": "https://www.nbcnews.com/politics/white-house/trump-pardons-george-papadopoulos-ex-gop-congressmen-n1252167"}
+      ]
+    },
+    {
+      "name": "Ryan Zinke",
+      "affiliation": "Republican",
+      "office": "Secretary of the Interior (2017 to 2019)",
+      "matter": "Misuse of official position, misleading investigators",
+      "summary": "The Interior Department Inspector General reported in February 2022 that he misused his position over a Montana development project, and in August 2022 that he knowingly misled investigators. No criminal charges were filed.",
+      "status": "Official finding",
+      "statusDetail": "Inspector General findings, no charges",
+      "statusDate": "2022-08-24",
+      "sources": [
+        {"publisher": "NPR", "url": "https://www.npr.org/2022/02/16/1081180054/ryan-zinke-interior-investigation-ig-report"},
+        {"publisher": "NBC News", "url": "https://www.nbcnews.com/politics/2022-election/ryan-zinke-knowingly-misled-federal-investigators-interior-secretary-i-rcna44614"}
+      ]
+    },
+    {
+      "name": "Steve Bannon",
+      "affiliation": "Administration (former White House chief strategist)",
+      "office": "White House Chief Strategist (2017)",
+      "matter": "Fraud in the We Build the Wall fundraiser",
+      "summary": "Federal fraud charges filed in 2020 ended with a presidential pardon in January 2021. In February 2025 he pleaded guilty in New York state court to scheming to defraud donors and received a conditional discharge with no jail time.",
+      "status": "Convicted",
+      "statusDetail": "State guilty plea; federal case pardoned",
+      "statusDate": "2025-02-11",
+      "sources": [
+        {"publisher": "NPR", "url": "https://www.npr.org/2025/02/12/g-s1-48347/steve-bannon-pleads-guilty-border-fraud"},
+        {"publisher": "CNBC", "url": "https://www.cnbc.com/2025/02/11/steve-bannon-trump-guilty-build-the-wall.html"}
+      ]
+    },
+    {
+      "name": "Tom Homan",
+      "affiliation": "Administration (appointed border czar)",
+      "office": "White House Border Czar (2025 to present)",
+      "matter": "Reported acceptance of $50,000 in cash from undercover FBI agents in 2024",
+      "summary": "News reports in September 2025 said an FBI sting recorded him accepting cash before he took office, and that the investigation was closed in 2025. The White House said he did nothing wrong. No charges have been filed.",
+      "status": "Reported",
+      "statusDetail": "Investigation reported closed, no charges",
+      "statusDate": "2025-09-20",
+      "sources": [
+        {"publisher": "PBS NewsHour", "url": "https://www.pbs.org/newshour/politics/white-house-backs-border-czar-tom-homan-after-reports-he-accepted-cash-during-an-undercover-fbi-probe-last-year"},
+        {"publisher": "Snopes", "url": "https://www.snopes.com/news/2025/10/13/tom-homan-bribe/"}
+      ]
+    }
+  ]
+}

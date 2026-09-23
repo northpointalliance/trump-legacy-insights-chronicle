@@ -21,7 +21,11 @@ site/                  the website (37 files)
   robots.txt           crawler rules
   _redirects           old URLs that forward to new ones
   404.html             "page not found" page
-scripts/build.mjs      copies site/ to dist/ and blocks old pages.dev links
+data/accountability.json  cases in the Federal Corruption Tracker (/accountability/)
+data/outlets.json      news organizations shown on the News Wire (/news-wire/)
+functions/news-wire/   Cloudflare Pages Function that fills /news-wire/ with live headlines
+scripts/build.mjs      copies site/ to dist/, renders the data pages, blocks old pages.dev links
+scripts/pages.mjs      templates for the tracker and news wire pages
 docs/ARCHITECTURE.md   how the site, hosting, and analytics fit together
 ```
 
@@ -29,6 +33,18 @@ docs/ARCHITECTURE.md   how the site, hosting, and analytics fit together
 
 1. Open the page's `index.html` in `site/` and edit the text.
 2. Commit and push to `main`. Cloudflare rebuilds and publishes it in about a minute.
+
+## Add a case to the corruption tracker
+
+1. Open `data/accountability.json` and copy an existing entry.
+2. Fill in name, party or role, office, matter, a short factual summary, status (Reported, Official finding, Charged, Convicted, Cleared), status detail, status date, and at least two sources. At least one source should be primary (court, DOJ, inspector general, ethics committee) when one exists.
+3. Update `lastReviewed` at the top, then push to `main`.
+
+A post on X is a lead, not a source. Only add a case once it meets the rule above.
+
+## Change the news wire outlets
+
+Edit `data/outlets.json` (name and domain per outlet, grouped by type), then push. Keep the total under about 40 outlets; each one is a separate request.
 
 ## Add a page
 
