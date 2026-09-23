@@ -4,6 +4,10 @@ A static reference site tracking the Trump presidencies: cabinet turnover, marke
 
 **Live:** https://thepresidencyledger.com
 
+## Where the repo lives
+
+Work from `C:\Sources\trump-legacy-insights-chronicle`, a Git clone of this repo. Do not keep working copies in OneDrive; sync conflicts corrupt Git folders.
+
 ## How it works
 
 - The website is the `site/` folder. What is in `site/` is exactly what visitors get.
@@ -27,6 +31,7 @@ functions/news-wire/   Cloudflare Pages Function that fills /news-wire/ with liv
 scripts/build.mjs      copies site/ to dist/, renders the data pages, blocks old pages.dev links
 scripts/pages.mjs      templates for the tracker and news wire pages
 docs/ARCHITECTURE.md   how the site, hosting, and analytics fit together
+docs/ai-build-lessons.md  rules for any AI agent working on this repo (read first)
 ```
 
 ## Change a page
